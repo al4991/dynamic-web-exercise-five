@@ -6,7 +6,6 @@ import firebase from './firebase';
 import Login from './containers/Login';
 import UserProfile from './containers/UserProfile';
 import Signup from './containers/Signup';
-import Logout from './containers/Logout';
 import Header from './components/Header';
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
   useEffect(() => { 
     firebase
       .auth()
-      .onAuthStateChanged( user => {
+      .onAuthStateChanged(user => {
         if (user) { 
           setLoggedIn(true); 
           setUser(user);
@@ -62,13 +61,11 @@ function App() {
   }
 
   function logoutFunction(e) {
+    console.log('here btw'); 
     e.preventDefault(); 
     firebase
       .auth()
       .signOut()
-      .then(res => { 
-        setLoggedIn(false); 
-      })
       .catch(err => console.log('err', err)); 
   }
 
@@ -85,9 +82,7 @@ function App() {
         <Route path='/sign-up'>
           {!loggedIn ? <Signup signupFunction={signupFunction}/> : <Redirect to="/" />}
         </Route>
-        <Route path='/log-out'>
-          {!loggedIn ? <Redirect to="/login"/>:<Logout /> }
-        </Route> 
+        
       </Router>
     </div>
   );
