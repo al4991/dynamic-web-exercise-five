@@ -20,3 +20,21 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Header {
+  border-bottom: 2px black;
+  margin: 0 auto; 
+  max-width: 1048px;
+}
+
+.Header nav { 
+  align-items: center;
+  display: flex; 
+  justify-content: flex-end;
+}
+
+.Header nav a {
+  color: black; 
+  display: inline-block; 
+  padding: 5px 15px;
+}
